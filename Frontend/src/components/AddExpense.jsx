@@ -2,11 +2,13 @@ import { useState } from "react";
 import myImage from "../assets/demo.png";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Dialog from "./uiComponents/Dialog";
 
 function AddExpense() {
   const [expenseDate, setExpenseDate] = useState(new Date());
   const [expenseName, setExpenseName] = useState("");
   const [amount, setAmount] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -30,6 +32,7 @@ function AddExpense() {
       setExpenseDate(new Date());
       setExpenseName("");
       setAmount('');
+      setShowModal(true);
     } catch (error) {
       console.log(error);
     }
@@ -38,6 +41,7 @@ function AddExpense() {
   return (
     <div className="addExpense-page flex justify-center items-center dark:bg-gray-900 min-h-screen">
       <img src={myImage} alt="graphic" className="w-full md:h-52 md:w-2xs" />
+      {showModal && (<Dialog displayText="Expense added successfully!" onClick={() => setShowModal(false)} />)}
       <form
         className="flex flex-col gap-2 w-full md:w-2xs p-5 mt-5 rounded-lg dark:text-white dark:bg-gray-850"
         onSubmit={handleSubmit}

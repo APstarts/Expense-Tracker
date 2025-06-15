@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Dialog from "./uiComponents/Dialog";
 
 function ExpenseDetails() {
   const [expenses, setExpenses] = useState([]);
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
+  const [showModal, setShowModal] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -38,6 +40,7 @@ function ExpenseDetails() {
         method: 'DELETE'
     });
     console.log("Selected data successfully deleted!");
+    setShowModal(true);
     } catch (error) {
         console.log("Error for deleting: ", error);
     }
@@ -48,6 +51,7 @@ function ExpenseDetails() {
       <h1 className="dark:text-white font-bold text-2xl">
         Your expenses record
       </h1>
+      {showModal && <Dialog displayText="Expense deleted successfully!" onClick={() => setShowModal(false)} />}
       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
         <div className="date-search-container flex gap-2 justify-between">
           <DatePicker
