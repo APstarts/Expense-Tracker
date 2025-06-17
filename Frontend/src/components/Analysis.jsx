@@ -14,8 +14,8 @@ function Analysis() {
     },[])
 
     return (
-        <div className="analysis-content-container flex flex-col items-center md:flex">
-            <h1>Analysis Page</h1>
+        <div className="analysis-content-container flex flex-col items-center">
+            <h1 className="dark:text-white">Analysis Page</h1>
             <Chart chartingdata={data}/>
         </div>
     )

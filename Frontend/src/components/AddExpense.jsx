@@ -39,6 +39,7 @@ function AddExpense() {
   }
 
   return (
+    <>
     <div className="addExpense-page flex justify-center items-center dark:bg-gray-900 min-h-screen">
       <img src={myImage} alt="graphic" className="w-full md:h-52 md:w-2xs" />
       {showModal && (<Dialog displayText="Expense added successfully!" onClick={() => setShowModal(false)} />)}
@@ -79,6 +80,7 @@ function AddExpense() {
         </button>
       </form>
     </div>
+    </>
   );
 }
 

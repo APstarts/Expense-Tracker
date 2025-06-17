@@ -47,7 +47,7 @@ function Chart({ chartingdata }) {
     labels,
     datasets: [
       {
-        label: 'Total Expense',
+        label: 'Total Expense category wise',
         data: dataForChart,
         backgroundColor: backgroundColors.slice(0, labels.length),
         borderRadius: 8,
